@@ -1,20 +1,28 @@
 package applications.bodyMass.bodyMassService;
 
-import java.util.Scanner;
-
-public class BodyMassServiceTurkce implements BodyMassService{
+public class BodyMassServiceTurkce extends BodyMassService {
 
 
-    static Scanner scanner = new Scanner(System.in);
     @Override
-    public void welcomeMessagge() {
+    void welcomeMesssage() {
         System.out.println("Dünya Sağlık Örgütü (WHO) vücut kitle indeksine gore kutle endeksi programina hosgeldiniz");
 
     }
 
     @Override
-    public void bodyMass() {
-        Scanner scanner = new Scanner(System.in);
+    void wrongChoiceMessage() {
+        System.out.println("Yanlis secim.Ana menuye donuluyor.")
+    }
+
+    @Override
+    void newChoiceMessage() {
+        System.out.println("Ana menu icin 1'e;\n" +
+                "Tekrar kontrol etmek icin 2 ye" +
+                "\nCikmak icin 0'a basiniz");
+    }
+
+    @Override
+    void bodyMas() {
         System.out.println("Lutfen cinsiyetinizi giriniz \nErkek icin 'E' \nKadin icin 'K'\n" +
                 "Cinsiyet belirtmemek icin 'x' tuslayiniz");
         String gender = scanner.next();
@@ -59,18 +67,5 @@ public class BodyMassServiceTurkce implements BodyMassService{
         }else {
             System.out.println("****Hesap araliginin disinda degerler***" );
         }
-    }
-
-    @Override
-    public int newChoice() {
-        System.out.println("Ana menu icin 1'e;\n" +
-                "Tekrar kontrol etmek icin 2 ye" +
-                "\nCikmak icin 0'a basiniz");
-        return scanner.nextInt();
-    }
-
-    @Override
-    public void wrongChoice() {
-        System.out.println("Yanlis secim.Ana menuye donuluyor.");
     }
 }
