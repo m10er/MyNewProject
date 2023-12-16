@@ -24,15 +24,45 @@ public class HoroscopeServiceTurkce implements HoroscopeService{
 
         System.out.println("Bu verilen olumsuz ozelliklerden sizi digerlerinden daha dogru ifade eden bir ozelligi yaziniz");
         System.out.println("bencil,kurnaz,daginik, elestirmeyi seven, duygusal, duygusuz");
-        String birinci = scanner.nextLine();
+        String birinci = null;
+        try {
+            birinci = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            startHoroscopePrediction();
+        }
         System.out.println("dik kafali, dikkatsiz, hayalci, elestiri sevemez, detayci, lukse duskun, kotumser");
-        String ikinci = scanner.nextLine();
+        String ikinci = null;
+        try {
+            ikinci = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            startHoroscopePrediction();
+        }
         System.out.println("inatci, sikilgan, supheci, duzen hastasi, kolay etkilenen, umursamaz, ucuk kacik ");
-        String ucuncu = scanner.nextLine();
+        String ucuncu = null;
+        try {
+            ucuncu = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            startHoroscopePrediction();
+        }
         System.out.println("kiskanc, kararsiz, kaba, tembel, gosterisli");
-        String dorduncu = scanner.nextLine();
+        String dorduncu = null;
+        try {
+            dorduncu = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            startHoroscopePrediction();
+        }
         System.out.println("dedikoducu, sabirsiz, agirkanli, kaprisli, musrif, sivri dilli, riskten korkan, kindar");
-        String besinci = scanner.nextLine();
+        String besinci = null;
+        try {
+            besinci = scanner.nextLine();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            startHoroscopePrediction();
+        }
 
         String[] arr = {birinci, ikinci, ucuncu, dorduncu, besinci};
         Arrays.sort(arr);

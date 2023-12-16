@@ -1,72 +1,70 @@
 package applications.atm.AtmService;
 
-import users.User;
 
-import java.util.Scanner;
+public class AtmManagerServiceTurkce extends AtmManagerService {
 
-public class AtmManagerServiceTurkce implements  AtmManagerService{
 
-    static Scanner scanner = new Scanner(System.in);
     @Override
-    public void welcomeMessage() {
-        System.out.println("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n" +
-                "Team130 Bankasina hosgelidniz\n" +
-                "!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
+    void atmWelcomeMessage() {
+        System.out.println("Team130 Bankasina Hos geldiniz \n" +
+                "            !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
     }
 
     @Override
-    public String tradingOptions() {
+    void tradingOptionMessage() {
         System.out.println("1----Bakiye goruntuleme---------" +
                 "\n2--------Para cekme------------- " +
                 "\n3---------Para yatirma-----------\n" +
                 "4-----------AnaProjeye gitmek icin-------------" +
                 "\n5=======Projeden cikis yapmak icin=======");
-        return scanner.next();
     }
 
     @Override
-    public void balanceView(User user) {
-        System.out.println("bakiyeniz =" + user.getAccaountBalance());
+    void balanceMessage() {
+        System.out.println("bakiyeniz =");
     }
 
     @Override
-    public void withdrawMoney(User user) {
+    void withDrawMoneyMessage() {
         System.out.println("Cekmek istediginiz tutari girin");
-        double money = scanner.nextDouble();
-
-        if (money > user.getAccaountBalance()) {
-            System.out.println("Bakiyeniz yetersizdir");
-        } else {
-            user.setAccaountBalance(user.getAccaountBalance() - money);
-            System.out.println("Para cekme islemi basariyla gerceklesmistir" +
-                    "\nKalan bakiye=" + user.getAccaountBalance());
-        }
     }
 
     @Override
-    public void depositMoney(User user) {
-        System.out.println("Yatirmak istediginiz tutari giriniz");
-        double money = scanner.nextDouble();
-        user.setAccaountBalance(user.getAccaountBalance() + money);
-        System.out.println("yeni bakiyeniz" + user.getAccaountBalance());
+    void insufficientBalance() {
+        System.out.println("Bakiyeniz yetersizdir");
     }
 
     @Override
-    public void exit() {
+    void successWithdrawmessage() {
+        System.out.println("Para cekme islemi basariyla gerceklesmistir" +
+                "\nKalan bakiye=");
+    }
+
+    @Override
+    void exitMessage() {
         System.out.println("Atmden cikis yapildi.\nBizi tercih ettiginiz icin tesekkur ederiz");
     }
 
     @Override
-    public void wrongChoice() {
+    void wrongChoiceMessage() {
         System.out.println("Yanlis secim.Lutfen tekrar deneyiniz");
     }
 
     @Override
-    public int newChoice() {
+    void newChoiceMessage() {
         System.out.println("Atm menusune donmek icin 1'e;\n" +
                 "Ana menu icin 2 ye" +
                 "\nCikmak icin 0'a basiniz");
-        return scanner.nextInt();
+    }
+
+    @Override
+    void depositMoney1Message() {
+        System.out.println("Yatirmak istediginiz tutari giriniz");
+    }
+
+    @Override
+    void depositMoney2Message() {
+        System.out.println("yeni bakiyeniz");
     }
 
 }

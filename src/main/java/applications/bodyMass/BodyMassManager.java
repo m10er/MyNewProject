@@ -4,7 +4,7 @@ import api.ProjectController;
 import applications.bodyMass.bodyMassService.BodyMassService;
 import applications.bodyMass.bodyMassService.BodyMassServiceDeutsch;
 import applications.bodyMass.bodyMassService.BodyMassServiceEnglish;
-import applications.bodyMass.bodyMassService.BodyMassServiceTurkce;
+import applications.bodyMass.bodyMassService.BodyMassServiceTurkey;
 import users.User;
 
 public class BodyMassManager {
@@ -16,11 +16,11 @@ public class BodyMassManager {
     public BodyMassManager(User user, String languageLetter) {
         projectController= new ProjectController();
         if (languageLetter.equalsIgnoreCase("D")){
-           this.bodyMassService= new BodyMassServiceDeutsch();
+          this.bodyMassService= new BodyMassServiceDeutsch();
         } else if (languageLetter.equalsIgnoreCase("E")) {
-            this.bodyMassService= new BodyMassServiceEnglish();
+            this.bodyMassService=new BodyMassServiceEnglish();
         } else if (languageLetter.equalsIgnoreCase("T")) {
-            this.bodyMassService= new BodyMassServiceTurkce();
+            this.bodyMassService= new BodyMassServiceTurkey();
         } else {
             System.out.println("language is missing");
         }

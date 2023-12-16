@@ -28,17 +28,28 @@ public class ProjectController {
                 "turkce icin T;\n" +
                 "fur Deutch D;\n" +
                 "for English E");
-        String option= scanner.next();
+        String option= null;
+        try {
+            option = scanner.next();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            login();
+        }
         String languageLetter= "";
-        if(option.equalsIgnoreCase("D")){
-            this.userService = new UserServiceDeutsch();
-            languageLetter="D";
-        } else if (option.equalsIgnoreCase("E")) {
-            this.userService= new UserServiceEnglish();
-            languageLetter="E";
-        }else {
-            this.userService= new UserServiceTurkce();
-            languageLetter="T";
+        try {
+            if(option.equalsIgnoreCase("D")){
+                this.userService = new UserServiceDeutsch();
+                languageLetter="D";
+            } else if (option.equalsIgnoreCase("E")) {
+                this.userService= new UserServiceEnglish();
+                languageLetter="E";
+            }else {
+                this.userService= new UserServiceTurkce();
+                languageLetter="T";
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            login();
         }
         this.user=userService.save();
         start(user, languageLetter);
@@ -95,10 +106,10 @@ public class ProjectController {
         projectService.exit();
     }
     public void option(User user, String languageLetter){
-        int choice= projectService.newChoice();
-        if ( choice== 1) {
+        String choice= projectService.newChoice();
+        if ( choice.equals("1")) {
             start(user,languageLetter);
-        } else if (choice == 0) {
+        } else if (choice.equals("0")) {
             projectService.exit();
         } else {
            projectService.wrongChoice();

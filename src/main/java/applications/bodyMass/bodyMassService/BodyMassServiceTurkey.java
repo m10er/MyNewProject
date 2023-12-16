@@ -1,7 +1,6 @@
 package applications.bodyMass.bodyMassService;
 
-public class BodyMassServiceTurkce extends BodyMassService {
-
+public class BodyMassServiceTurkey extends BodyMassService {
 
     @Override
     void welcomeMesssage() {
@@ -11,7 +10,7 @@ public class BodyMassServiceTurkce extends BodyMassService {
 
     @Override
     void wrongChoiceMessage() {
-        System.out.println("Yanlis secim.Ana menuye donuluyor.")
+        System.out.println("Yanlis secim.Ana menuye donuluyor.");
     }
 
     @Override
@@ -25,24 +24,47 @@ public class BodyMassServiceTurkce extends BodyMassService {
     void bodyMas() {
         System.out.println("Lutfen cinsiyetinizi giriniz \nErkek icin 'E' \nKadin icin 'K'\n" +
                 "Cinsiyet belirtmemek icin 'x' tuslayiniz");
-        String gender = scanner.next();
+        String gender = null;
+        try {
+            gender = scanner.next();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            bodyMass();
+        }
         System.out.println("Lutfen boyunuzu santimetre olarak giriniz (165, 156 seklinde) ");
-        double size = scanner.nextDouble();
+        double size = 0;
+        try {
+            size = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            bodyMass();
+        }
         System.out.println("Lutfen kilonuzu giriniz");
-        double weight = scanner.nextDouble();
+        double weight = 0;
+        try {
+            weight = scanner.nextDouble();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            bodyMass();
+        }
 
         double massIndex = (weight / ((size/100) * (size/100)));
         double idealWeightMale= 50 +2.3 * ((size / 2.54) -60);
         double idealWeightwoman = 45 +2.3 * ((size / 2.54) -60);
         double idealWeight= 48 +2.3 * ((size / 2.54) -60);
-        if(gender.substring(0,1).equalsIgnoreCase("K")){
-            System.out.println(" idel kilonuz = "+idealWeightwoman);
-        } else if (gender.substring(0,1).equalsIgnoreCase("E")) {
-            System.out.println(" idel kilonuz "+ idealWeightMale);
-        }else if (gender.substring(0,1).equalsIgnoreCase("x")) {
-            System.out.println(" ideal kilonuz "+ idealWeight);
-        }else {
-            System.out.println("Yanlis Cinsiyet secimi yaptiniz");
+        try {
+            if(gender.substring(0,1).equalsIgnoreCase("K")){
+                System.out.println(" idel kilonuz = "+idealWeightwoman);
+            } else if (gender.substring(0,1).equalsIgnoreCase("E")) {
+                System.out.println(" idel kilonuz "+ idealWeightMale);
+            }else if (gender.substring(0,1).equalsIgnoreCase("x")) {
+                System.out.println(" ideal kilonuz "+ idealWeight);
+            }else {
+                System.out.println("Yanlis Cinsiyet secimi yaptiniz");
+                bodyMass();
+            }
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
             bodyMass();
         }
 
